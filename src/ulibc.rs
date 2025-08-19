@@ -14,7 +14,7 @@ unsafe extern "C" fn printf(str: *const c_char, mut args: ...) -> c_int {
     let mut s = String::new();
     let bytes_written = format(str as _, args.as_va_list(), output::fmt_write(&mut s));
     //println!("{}", s);
-    info!("{}", s);
+    trace!("{}", s);
 
     bytes_written
 }
@@ -27,7 +27,7 @@ unsafe extern "C" fn printf(str: *const c_char, mut args: ...) -> c_int {
     let c_str = unsafe { CStr::from_ptr(str) };
     //let arg1 = args.arg::<usize>();
 
-    info!("[lwext4] {:?}", c_str);
+    trace!("[lwext4] {:?}", c_str);
     0
 }
 
